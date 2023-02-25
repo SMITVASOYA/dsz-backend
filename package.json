@@ -1,0 +1,50 @@
+{
+  "name": "dsz-backend",
+  "version": "1.0.0",
+  "description": "backend",
+  "main": "src/app.js",
+  "scripts": {
+    "start": "node src/app.js",
+    "dev": "nodemon src/app.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "format:check": "prettier --check .",
+    "format:write": "prettier --write .",
+    "lint:check": "eslint .",
+    "lint:fix": "eslint --fix ."
+  },
+  "keywords": [
+    "dsz",
+    "backend"
+  ],
+  "author": "jainaayush01",
+  "license": "MIT",
+  "dependencies": {
+    "@joi/date": "^2.1.0",
+    "@sendgrid/mail": "^7.7.0",
+    "axios": "^1.3.4",
+    "bcrypt": "^5.1.0",
+    "body-parser": "^1.20.1",
+    "compression": "^1.7.4",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "express-session": "^1.17.3",
+    "express-session-sequelize": "^2.3.0",
+    "helmet": "^6.0.1",
+    "joi": "^17.7.0",
+    "moment": "^2.29.4",
+    "morgan": "^1.10.0",
+    "mysql2": "^2.3.3",
+    "node-cron": "^3.0.2",
+    "number-to-words": "^1.2.4",
+    "pdf-creator-node": "^2.3.5",
+    "sequelize": "^6.25.7",
+    "toobusy-js": "^0.5.1"
+  },
+  "devDependencies": {
+    "eslint": "^8.27.0",
+    "eslint-config-prettier": "^8.5.0",
+    "prettier": "^2.7.1"
+  }
+}
