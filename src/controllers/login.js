@@ -68,7 +68,7 @@ const login = async (req, res) => {
       req.session.isAdmin = result.dataValues.employee_isAdmin
       req.session.isHR = result.dataValues.employee_isHR
       req.session.employee_id = result.dataValues.employee_id
-      console.log(req.session, 'req.session')
+
       return res.status(200).json({
         data: result,
         error: false,

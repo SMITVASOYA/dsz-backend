@@ -10,7 +10,7 @@ const {
 
 const { employeeController, bankInfoController } = require('../controllers/')
 
-router.get('/all', allowBothAdminAndHR, employeeController.retrieveAllEmployees)
+router.get('/all', employeeController.retrieveAllEmployees)
 
 router.get('/check', allowBothAdminAndHR, employeeController.checkEmpExists)
 

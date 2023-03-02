@@ -84,4 +84,10 @@ router.patch(
   queryController.updateQueryStatus
 )
 
+router.post(
+  '/forwardQueries',
+  allowEmployee,
+  queryController.forwardQueriesToAnotherEmployee
+)
+
 module.exports = router

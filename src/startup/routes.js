@@ -21,6 +21,11 @@ const corsOptions = {
   credentials: true, //access-control-allow-credentials:true
   optionSuccessStatus: 200,
 }
+
+const corsOpts = {
+  origin: '*',
+  credentials: true,
+}
 var morgan = require('morgan')
 var fs = require('fs')
 var path = require('path')
@@ -32,7 +37,7 @@ var accessLogStream = fs.createWriteStream(path.join(__dirname, 'access.log'), {
 })
 
 module.exports = (app) => {
-  app.use(cors(corsOptions))
+  app.use(cors(corsOpts))
   app.use(helmet())
   app.use(morgan('combined', { stream: accessLogStream }))
   app.use(bodyParser.json())
@@ -46,7 +51,9 @@ module.exports = (app) => {
   })
   app.use(cookieParser())
   app.use(
-    session({
+    expressSession({
+      name: 'darshanSession',
+      store: sequelizeSessionStore,
       secret: process.env.SESSION_SECRET,
       resave: false,
       saveUninitialized: false,

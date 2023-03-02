@@ -392,7 +392,7 @@ const getAllQueriesAssignedToEmployee = async (req, res) => {
     }
 
     let result = await db.query.findAll({
-      order: [['createdAt', 'DESC']],
+      order: [['updatedAt', 'DESC']],
       where: {
         employee_id: payload.employee_id,
         query_state: payload.query_state,
@@ -844,6 +844,78 @@ const getQueriesRunningNoFollowup = async (req, res) => {
   }
 }
 
+const forwardQueriesToAnotherEmployee = async (req, res) => {
+  try {
+    if (!req.body) {
+      throw new Error('ValidationError')
+    }
+    const payload = {
+      from_employee_id: req.session.employee_id,
+      to_employee_id: parseInt(req.body.to_employee_id),
+      // query_state: req.body.query_state || 'running',
+      query_array: req.body.query_array,
+    }
+
+    if (isNaN(payload.from_employee_id) || isNaN(payload.to_employee_id)) {
+      throw new Error('ValidationError')
+    }
+
+    const toEmployeeId = await db.employee.findByPk(payload.to_employee_id)
+    const fromEmployeeId = await db.employee.findByPk(payload.from_employee_id)
+    if (toEmployeeId === null || fromEmployeeId === null) {
+      throw new Error('Employee Not Found')
+    }
+
+    await db.query.update(
+      {
+        employee_id: payload.to_employee_id,
+      },
+      {
+        where: {
+          employee_id: payload.from_employee_id,
+          query_id: { [Op.in]: payload.query_array },
+        },
+      }
+    )
+
+    return res.status(200).json({
+      message: 'Successfully Transfered Queries to other Employee',
+      error: false,
+    })
+  } catch (err) {
+    console.log(err)
+    if (err.name === 'SequelizeForeignKeyConstraintError') {
+      return res.status(404).json({
+        errorType: 'Bad Request',
+        errorMessage: 'Employee Not Found',
+        error: true,
+      })
+    }
+
+    if (err.message === 'NotFound') {
+      return res.status(404).json({
+        errorType: 'Not Found',
+        errorMessage: 'Query Not Found',
+        error: true,
+      })
+    }
+
+    if (err.message === 'ValidationError') {
+      return res.status(400).json({
+        errorType: 'Bad Request',
+        errorMessage: 'Validation Error',
+        error: true,
+      })
+    }
+
+    return res.status(400).json({
+      error: true,
+      errorType: err.name,
+      errorMessage: err.message,
+    })
+  }
+}
+
 module.exports = {
   createQuery,
   getQuery,
@@ -860,4 +932,5 @@ module.exports = {
   retrieveAllQueriesInGivenTimeBlocked,
   getQueriesCreatedUnAssigned,
   getQueriesRunningNoFollowup,
+  forwardQueriesToAnotherEmployee,
 }
