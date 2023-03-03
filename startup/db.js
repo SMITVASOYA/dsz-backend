@@ -16,7 +16,7 @@ const sequelize = new Sequelize(
       max: 1000,
     },
     dialect: 'mysql',
-    dialectModule: mysql2,
+    // dialectModule: mysql2,
     // dialectOptions: {
     //   socketPath: '/var/run/mysqld/mysqld.sock',
     // },
