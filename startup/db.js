@@ -3,7 +3,7 @@ const models = require('../models/init-models')
 const expressSession = require('express-session')
 const SessionStore = require('express-session-sequelize')(expressSession.Store)
 require('dotenv').config()
-const mysql2 = require('mysql2')
+// const mysql2 = require('mysql2')
 
 const sequelize = new Sequelize(
   process.env.DB,
