@@ -39,7 +39,7 @@ const compression = require('compression')
 module.exports = (app) => {
   app.use(cors(corsOpts))
   app.use(helmet())
-  app.use(morgan('combined', { stream: accessLogStream }))
+  // app.use(morgan('combined', { stream: accessLogStream }))
   app.use(bodyParser.json())
   app.use(compression())
   app.use(function (req, res, next) {
