@@ -16,7 +16,7 @@ app.use(cors())
 app.get('/', async (req, res) => {
   try {
     // let data = await sequelize.query('SELECT * from employee LIMIT 1')
-    // console.log(data)
+    console.log("inside startup ")
     res.json('HELLO')
   } catch (err) {
     console.log(err)
