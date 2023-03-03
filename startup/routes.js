@@ -27,14 +27,14 @@ const corsOpts = {
   credentials: true,
 }
 var morgan = require('morgan')
-var fs = require('fs')
+// var fs = require('fs')
 var path = require('path')
 const { default: helmet } = require('helmet')
 const toobusy = require('toobusy-js')
 const compression = require('compression')
-var accessLogStream = fs.createWriteStream(path.join(__dirname, 'access.log'), {
-  flags: 'a',
-})
+// var accessLogStream = fs.createWriteStream(path.join(__dirname, 'access.log'), {
+//   flags: 'a',
+// })
 
 module.exports = (app) => {
   app.use(cors(corsOpts))
