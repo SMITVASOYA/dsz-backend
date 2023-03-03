@@ -11,15 +11,15 @@ const sequelize = new Sequelize(
   process.env.DB_PASSWORD,
   {
     host: process.env.DB_HOST,
-    dialect: 'mysql',
     logging: false,
     pool: {
       max: 1000,
     },
+    dialect: 'mysql',
     dialectModule: mysql2,
-    // dialectOptions: {
-    //   socketPath: '/var/run/mysqld/mysqld.sock',
-    // },
+    dialectOptions: {
+      socketPath: '/var/run/mysqld/mysqld.sock',
+    },
   }
 )
 
