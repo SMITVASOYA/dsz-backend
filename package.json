@@ -4,7 +4,7 @@
   "description": "backend",
   "main": "src/app.js",
   "scripts": {
-    "start": "node src/app.js",
+    "start": "nodemon src/app.js",
     "dev": "nodemon src/app.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "format:check": "prettier --check .",
@@ -41,7 +41,8 @@
     "number-to-words": "^1.2.4",
     "pdf-creator-node": "^2.3.5",
     "sequelize": "^6.25.7",
-    "toobusy-js": "^0.5.1"
+    "toobusy-js": "^0.5.1",
+    "nodemon": "^2.0.21"
   },
   "devDependencies": {
     "eslint": "^8.27.0",
