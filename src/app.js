@@ -9,7 +9,9 @@ const cors =  require("cors")
 
 
 app.use(express.json())
-app.use(cors())
+app.use(cors({
+  origin: 'http://128.199.26.175'
+}));
 
 const { sequelize } = require('./startup/db')
 const createProductList = require('./startup/createProductList')
