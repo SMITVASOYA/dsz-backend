@@ -38,7 +38,7 @@ var accessLogStream = fs.createWriteStream(path.join(__dirname, 'access.log'), {
 
 module.exports = (app) => {
   app.use(cors({
-    origin: ['http://128.199.26.175:3000','*','https://www.darshansafety.in'],
+    origin: ['http://128.199.26.175:3000','*','https://darshansafety.in'],
     credentials: true, 
   }));
   app.use(helmet())
