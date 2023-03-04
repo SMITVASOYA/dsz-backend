@@ -5,6 +5,11 @@ require('dotenv').config()
 require('./startup/routes')(app)
 const cron = require('node-cron')
 const { db } = require('./startup/db')
+const cors =  require("cors")
+
+
+app.use(express.json())
+app.use(cors())
 
 const { sequelize } = require('./startup/db')
 const createProductList = require('./startup/createProductList')
