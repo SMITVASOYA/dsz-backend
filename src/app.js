@@ -5,18 +5,15 @@ require('dotenv').config()
 require('./startup/routes')(app)
 const cron = require('node-cron')
 const { db } = require('./startup/db')
-const cors = require("cors")
 
 const { sequelize } = require('./startup/db')
 const createProductList = require('./startup/createProductList')
 const axios = require('axios')
 
-
-app.use(cors())
 app.get('/', async (req, res) => {
   try {
     // let data = await sequelize.query('SELECT * from employee LIMIT 1')
-    console.log("inside startup ")
+    // console.log(data)
     res.json('HELLO')
   } catch (err) {
     console.log(err)

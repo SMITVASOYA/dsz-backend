@@ -3,7 +3,6 @@ const models = require('../models/init-models')
 const expressSession = require('express-session')
 const SessionStore = require('express-session-sequelize')(expressSession.Store)
 require('dotenv').config()
-// const mysql2 = require('mysql2')
 
 const sequelize = new Sequelize(
   process.env.DB,
@@ -11,15 +10,14 @@ const sequelize = new Sequelize(
   process.env.DB_PASSWORD,
   {
     host: process.env.DB_HOST,
+    dialect: 'mysql',
     logging: false,
     pool: {
       max: 1000,
     },
-    dialect: 'mysql',
-    // dialectModule: mysql2,
-    // dialectOptions: {
-    //   socketPath: '/var/run/mysqld/mysqld.sock',
-    // },
+    /*dialectOptions: {
+      socketPath: '/var/run/mysqld/mysqld.sock',
+    },*/
   }
 )
 
