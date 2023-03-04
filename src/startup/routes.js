@@ -37,7 +37,10 @@ var accessLogStream = fs.createWriteStream(path.join(__dirname, 'access.log'), {
 })
 
 module.exports = (app) => {
-  app.use(cors(corsOpts))
+  app.use(cors({
+    origin: ['http://128.199.26.175:3000','*'],
+    credentials: true, 
+  }));
   app.use(helmet())
   app.use(morgan('combined', { stream: accessLogStream }))
   app.use(bodyParser.json())
