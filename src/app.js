@@ -10,7 +10,7 @@ const cors =  require("cors")
 
 app.use(express.json())
 app.use(cors({
-  origin: ['http://128.199.26.175:3000','*'],
+  origin: ['http://128.199.26.175:3000','*','https://www.darshansafety.in'],
   credentials: true, 
 
 }));
