@@ -247,7 +247,7 @@ console.log(quotation_data,"quotation_data")
           quotation.dataValues.quotation_number,
           quotation.dataValues.quotation_count_no,
           quotation.dataValues.quotation_financial_year,
-          quotation_data[0].sender.name.charAt(0)
+          quotation_data.sender.name.charAt(0)
         )
 
         quotations[index].dataValues.generatedQuotationNumber =
