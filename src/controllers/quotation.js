@@ -242,7 +242,7 @@ const retrieveQuotationsOfQuery = async (req, res) => {
     } else {
       quotations.forEach((quotation, index) => {
         const quotation_data = JSON.parse(quotation.dataValues.quotation_data)
-
+console.log(quotation_data,"quotation_data")
         const generatedQuotationNumber = buildQuotationNumber(
           quotation.dataValues.quotation_number,
           quotation.dataValues.quotation_count_no,
