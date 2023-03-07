@@ -3,7 +3,7 @@ const Joi = require('joi').extend(require('@joi/date'))
 const validateEmployee = (employee) => {
   const employeeSchema = Joi.object({
     employee_name: Joi.string().min(3).max(255).required(),
-    employee_password: Joi.string().min(3).max(255).required(),
+    employee_password: Joi.string().min(8).max(255).required(),
     employee_designation: Joi.string().min(3).max(255).required(),
     employee_dob: Joi.date().format('YYYY-MM-DD').required(),
     employee_doj: Joi.date()
@@ -32,7 +32,7 @@ const validateEmployee = (employee) => {
 const validateEmployeeWOP = (employee) => {
   const employeeSchema = Joi.object({
     employee_name: Joi.string().min(3).max(255).required(),
-    employee_password: Joi.string().min(3).max(255),
+    employee_password: Joi.string().min(8).max(255),
     employee_designation: Joi.string().min(3).max(255).required(),
     employee_dob: Joi.date().format('YYYY-MM-DD').required(),
     employee_doj: Joi.date()

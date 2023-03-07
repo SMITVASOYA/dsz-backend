@@ -23,7 +23,7 @@ const corsOptions = {
 }
 
 const corsOpts = {
-  origin: '*',
+  origin: ['http://localhost:3000','http://128.199.26.175:3000', '*'],
   credentials: true,
 }
 var morgan = require('morgan')
@@ -37,10 +37,7 @@ var accessLogStream = fs.createWriteStream(path.join(__dirname, 'access.log'), {
 })
 
 module.exports = (app) => {
-  app.use(cors({
-    origin: ['http://128.199.26.175:3000','*','https://darshansafety.in'],
-    credentials: true, 
-  }));
+  app.use(cors(corsOpts))
   app.use(helmet())
   app.use(morgan('combined', { stream: accessLogStream }))
   app.use(bodyParser.json())

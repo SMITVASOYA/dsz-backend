@@ -419,7 +419,7 @@ const getAllLeaveNotifications = async (req, res) => {
         model: db.employee,
         as: 'employee',
       },
-      order: [['createdAt', 'DESC']],
+      order: [['updatedAt', 'DESC']],
     })
     return res.status(200).json({
       data: leaveRequests,
@@ -444,7 +444,7 @@ const getAllLeavesHistory = async (req, res) => {
         model: db.employee,
         as: 'employee',
       },
-      order: [['createdAt', 'DESC']],
+      order: [['updatedAt', 'DESC']],
     })
     return res.status(200).json({
       data: leaveRequests,
