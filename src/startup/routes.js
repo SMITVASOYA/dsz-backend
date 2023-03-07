@@ -23,7 +23,7 @@ const corsOptions = {
 }
 
 const corsOpts = {
-  origin: ['http://localhost:3000','http://128.199.26.175:3000', '*'],
+  origin: ['http://localhost:3000','http://128.199.26.175:3006','http://128.199.26.175:3000', '*'],
   credentials: true,
 }
 var morgan = require('morgan')
