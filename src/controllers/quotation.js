@@ -318,10 +318,10 @@ const retrieveQuotationsOfQueryLatest = async (req, res) => {
         quotations[0].quotation_financial_year,
         quotation.sender.name.charAt(0)
       )
-      quotation[0].metadata.quotation_number = generatedQuotationNumber
+      quotation.metadata.quotation_number = generatedQuotationNumber
       return res.status(200).json({
         error: false,
-        data: quotation[0],
+        data: quotation,
       })
     }
   } catch (err) {
