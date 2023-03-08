@@ -307,6 +307,7 @@ const retrieveQuotationsOfQueryLatest = async (req, res) => {
       },
       order: [['quotation_count_no', 'DESC']],
     })
+    console.log("🚀 ~ file: quotation.js:310 ~ retrieveQuotationsOfQueryLatest ~ quotations:", quotations.length)
     if (quotations.length === 0) {
       throw new Error('NotFound')
     } else {
@@ -315,7 +316,7 @@ const retrieveQuotationsOfQueryLatest = async (req, res) => {
         quotations[0].quotation_number,
         quotations[0].quotation_count_no,
         quotations[0].quotation_financial_year,
-        quotation[0].sender.name.charAt(0)
+        quotation.sender.name.charAt(0)
       )
       quotation[0].metadata.quotation_number = generatedQuotationNumber
       return res.status(200).json({
